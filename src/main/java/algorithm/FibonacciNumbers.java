@@ -1,22 +1,34 @@
 package algorithm;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class FibonacciNumbers {
-    public static void main(String[] args) {
-        FibonacciNumbers fn = new FibonacciNumbers();
-        for (int x =0; x <=15; x++){
-            System.out.println("fib("+ x + ")= " +fn.fib(x));
-        }
+    private Map<Integer, Long> dictionary;
+
+    public FibonacciNumbers() {
+        this.dictionary = new HashMap<>();
     }
 
-
-    private long fib(int x){
-        if(x == 0){
+    public long fib(int n){
+        if(n == 0){
             return 0;
         }
-        if (x == 1){
+        if (n == 1){
             return 1;
         }
-        return fib(x -1)+fib (x -2);
+        return memo(n -1)+memo (n -2);
 
+    }
+
+    private long memo(int m){
+        Long value = dictionary.get(m);
+
+        if (value != null){
+            return value;
+        }
+        value = fib(m);
+        dictionary.put(Integer.valueOf(m),value);
+        return value;
     }
 }
