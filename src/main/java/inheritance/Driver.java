@@ -1,25 +1,24 @@
 package inheritance;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Driver {
     public static void main(String[] args) {
 
-        Jeep jeep = new Jeep();
-        Jeep wrangler = new Wrangler();
-
-        jeep.setGasMileage(12.0);
-        wrangler.setGasMileage(13.0);
-
-        System.out.println(jeep.getGasMileage());
-        System.out.println(wrangler.getGasMileage());
-
-        jeep.numberofSeats = 55;
-        wrangler.numberofSeats =55;
-
-        System.out.println(jeep.getNumberOfSeats());
-        System.out.println(wrangler.getNumberOfSeats());
+        Landcraft grandCherokee = new GrandCherokee();
+        Landcraft wrangler = new Wrangler();
 
 
+        List<Landcraft> landcrafts = new ArrayList<>();
+        landcrafts.add(grandCherokee);
+        landcrafts.add(wrangler);
 
+        for (Landcraft lc : landcrafts){
+            System.out.println(lc.getClass().getSimpleName());
+        }
+
+        landcrafts.forEach(System.out::println);
 
     }
 }
